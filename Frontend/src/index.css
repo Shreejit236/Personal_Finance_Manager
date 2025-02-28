@@ -1,7 +1,7 @@
 /* Custom Styles */
 body {
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #f0f4f8, #dfe9f3);
+  background: linear-gradient(135deg, #f0f4f8, #dfe9f3) fixed;
   color: #2c3e50;
   margin: 0;
   padding: 0;

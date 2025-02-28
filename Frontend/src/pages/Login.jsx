@@ -8,11 +8,17 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage("Login Successful!");
-    setTimeout(() => setMessage(""), 3000); // Clear message after 3 seconds
+    setLoading(true);
+    // Simulate a login request
+    setTimeout(() => {
+      setMessage("Login Successful!");
+      setLoading(false);
+      setTimeout(() => setMessage(""), 3000);
+    }, 1000);
   };
 
   return (
@@ -58,8 +64,8 @@ const Login = () => {
                 onChange={(e) => setRememberMe(e.target.checked)}
               />
             </Form.Group>
-            <Button variant="primary-custom" type="submit" className="w-100 mb-3">
-              Login
+            <Button variant="primary-custom" type="submit" className="w-100 mb-3" disabled={loading}>
+              {loading ? "Logging in..." : "Login"}
             </Button>
             <div className="text-center">
               <p className="mb-1">Don't have an account?</p>

@@ -9,16 +9,22 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       setMessage("Passwords do not match!");
       setTimeout(() => setMessage(""), 3000);
       return;
     }
-    setMessage("Registration Successful!");
-    setTimeout(() => setMessage(""), 3000);
+    setLoading(true);
+    // Simulate a registration request
+    setTimeout(() => {
+      setMessage("Registration Successful!");
+      setLoading(false);
+      setTimeout(() => setMessage(""), 3000);
+    }, 1000);
   };
 
   return (
@@ -84,8 +90,8 @@ const Register = () => {
                 required
               />
             </Form.Group>
-            <Button variant="primary-custom" type="submit" className="w-100 mb-3">
-              Register
+            <Button variant="primary-custom" type="submit" className="w-100 mb-3" disabled={loading}>
+              {loading ? "Registering..." : "Register"}
             </Button>
             <div className="text-center">
               <p className="mb-1">Already have an account?</p>

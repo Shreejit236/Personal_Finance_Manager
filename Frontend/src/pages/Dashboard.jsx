@@ -25,9 +25,7 @@ ChartJS.register(
 
 const Dashboard = () => {
   const [view, setView] = useState("graph"); // Toggle between "graph" and "list"
-
-  // Sample data for transactions
-  const transactions = [
+  const [transactions, setTransactions] = useState([
     {
       id: 1,
       type: "income",
@@ -60,7 +58,7 @@ const Dashboard = () => {
       amount: 800,
       description: "Freelance project",
     },
-  ];
+  ]);
 
   // Calculate total income and expenses
   const totalIncome = transactions

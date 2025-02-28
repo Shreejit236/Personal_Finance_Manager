@@ -21,6 +21,11 @@ const Expense = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (amount <= 0) {
+      setMessage("Amount must be a positive number!");
+      setTimeout(() => setMessage(""), 3000);
+      return;
+    }
     setMessage("Expense Added Successfully!");
     setTimeout(() => setMessage(""), 3000);
     setCategory("Groceries");
