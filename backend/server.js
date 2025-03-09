@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
+const cors = require("cors");
 
 // Load environment variables
 dotenv.config();
@@ -10,6 +11,9 @@ connectDB();
 
 // Initialize Express app
 const app = express();
+
+// Enable CORS
+app.use(cors());
 
 // Middleware to parse JSON bodies
 app.use(express.json());
